@@ -1,21 +1,23 @@
-(define pack-sprites
+(define (pack-sprites
 (let* (
     (cols 5)
-    (rows 3)
-    (i 0)
-    (n 14)
-    (image (gimp-image-list))
-    (layers (gimp-image-get-layers 3))
+    (sprite_width 750)
+    (sprite_height 1026)
+    (image (car(vector->list(cadr(gimp-image-list)))))
+    (layers (vector->list(cadr(gimp-image-get-layers image))))
     )
-    (while (< i n)
-        (offx (* 750 (% i 5)))
-        (offy (* 1026 (floor (/ i 5))))
-        (gimp-layer-translate layers offx offy)
+    (let loop ((i 0 ))
+    (if (< i 14))
+    (begin
+    (let* (
+        (offx (* sprite_width (modulo i cols)))
+        (offy (* sprite_height (floor (/ i cols))))
+        (layer (car layers))
         (set! layers (cdr layers))
-        (+ i 1)
-    )
-)
-)
+        )
+        (gimp-layer-translate layer offx offy)
+    (loop (+ i 1) ) ) ) )
+) ) )
 
 (script-fu-register
     "pack-sprites"
