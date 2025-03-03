@@ -11,11 +11,11 @@
     (begin
     (let* (
         (offx (* spriteWidth (modulo i cols)))
-        (offy (* spriteHeight (floor (/ i cols))))
+        (offy (* spriteHeight (inexact->exact (floor (/ i cols)))))
         (layer (if (pair? layers) (car layers) layers))
         )
-        (gimp-message "i: ")
-        (gimp-message (number->string i))
+        (gimp-message "offy: ")
+        (gimp-message (number->string offy))
         (gimp-layer-translate layer offx offy)  ; displacing them into a grid arrangement
         (set! layers (if (pair? layers) (cdr layers) layers) ) )
     (loop (+ i 1) ) ) ) )
