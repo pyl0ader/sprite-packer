@@ -12,7 +12,7 @@
         (offy (* spriteHeight (inexact->exact (floor (/ i cols)))))
         (layer (if (pair? layers) (car layers) layers))
         )
-        (gimp-layer-translate layer offx offy)  ; displacing them into a grid arrangement
+        (gimp-layer-set-offsets layer offx offy)  ; displacing them into a grid arrangement
         (set! layers (if (pair? layers) (cdr layers) layers) ) )
     (loop (+ i 1) ) ) ) )
 ) )
