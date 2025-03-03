@@ -4,18 +4,20 @@
     (layersCount (car(gimp-image-get-layers image)))
     )
     ; TODO resize canvas
-    (gimp-message "A")
+    (gimp-message "Layers: ")
+    (gimp-message (number->string layersCount))
     (let loop ((i 0 ))  ; loop through layers
     (if (< i layersCount))
     (begin
     (let* (
         (offx (* spriteWidth (modulo i cols)))
         (offy (* spriteHeight (floor (/ i cols))))
-        (layer (car layers))
-        (set! layers (cdr layers))
+        (layer (if (pair? layers) (car layers) layers))
         )
-        (gimp-message "B")
+        (gimp-message "i: ")
+        (gimp-message (number->string i))
         (gimp-layer-translate layer offx offy)  ; displacing them into a grid arrangement
+        (set! layers (if (pair? layers) (cdr layers) layers) )
     (loop (+ i 1) ) ) ) )
 ) )
 
