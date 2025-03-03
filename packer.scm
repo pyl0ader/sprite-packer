@@ -3,7 +3,7 @@
     (layers (vector->list(cadr(gimp-image-get-layers image))))
     (layersCount (car(gimp-image-get-layers image)))
     )
-    ; TODO resize canvas
+    (gimp-image-resize image (* spriteWidth cols) (* spriteHeight (inexact->exact (ceiling (/ layersCount cols)))) 0 0)
     (let loop ((i 0 ))  ; loop through layers
     (if (< i layersCount)
     (begin
