@@ -1,4 +1,4 @@
 # sprite-packer
 pack gimp layers into spritesheet
 
-![scrot](https://github.com/user-attachments/assets/b09063bc-7b82-4c57-8eb5-a7382fc3f9db)
+![galvin_run](https://github.com/user-attachments/assets/5deed80e-67ae-4d0f-8979-35c495e22da0)
