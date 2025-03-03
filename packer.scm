@@ -7,7 +7,7 @@
     (gimp-message "Layers: ")
     (gimp-message (number->string layersCount))
     (let loop ((i 0 ))  ; loop through layers
-    (if (< i layersCount))
+    (if (< i layersCount)
     (begin
     (let* (
         (offx (* spriteWidth (modulo i cols)))
@@ -17,7 +17,7 @@
         (gimp-message "i: ")
         (gimp-message (number->string i))
         (gimp-layer-translate layer offx offy)  ; displacing them into a grid arrangement
-        (set! layers (if (pair? layers) (cdr layers) layers) )
+        (set! layers (if (pair? layers) (cdr layers) layers) ) )
     (loop (+ i 1) ) ) ) )
 ) )
 
